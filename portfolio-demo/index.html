@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A personal career dashboard for Nikil K." />
+  <title>Nikil K | Career Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f7fb; --surface: #ffffff; --ink: #17243a; --muted: #718096;
+      --line: #e7edf5; --blue: #356ae6; --blue-soft: #eaf0ff;
+      --teal: #16a6a0; --teal-soft: #e4f7f5; --purple: #8564d8;
+      --shadow: 0 12px 34px rgba(27, 49, 83, .07);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-serif; }
+    .shell { max-width: 1180px; margin: auto; padding: 30px 24px 48px; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:18px; margin-bottom:28px; }
+    .brand { display:flex; align-items:center; gap:13px; }
+    .avatar { width:48px; height:48px; border-radius:15px; display:grid; place-items:center; color:#fff; font:800 18px Manrope; background:linear-gradient(135deg,#356ae6,#16a6a0); box-shadow:0 7px 18px #356ae633; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font:800 22px Manrope,sans-serif; margin:0; letter-spacing:-.5px; }
+    .eyebrow { color:var(--muted); font-size:12px; margin-top:4px; }
+    .top-tag { background:#eaf0ff; color:#2859c8; padding:9px 13px; border-radius:30px; font-size:12px; font-weight:700; white-space:nowrap; }
+    .hero { background:linear-gradient(115deg,#172b52,#244f91 65%,#1c8e91); color:#fff; border-radius:22px; padding:30px; display:flex; justify-content:space-between; align-items:center; gap:20px; box-shadow:var(--shadow); position:relative; overflow:hidden; }
+    .hero:after { content:""; position:absolute; width:280px;height:280px;border:1px solid #ffffff22;border-radius:50%;right:8%;top:-160px;box-shadow:0 0 0 35px #ffffff09,0 0 0 70px #ffffff07; }
+    .hero-copy { position:relative; z-index:1; }
+    .hero h2 { font:800 clamp(25px,4vw,36px) Manrope; margin:8px 0 7px; letter-spacing:-1px; }
+    .hero p { color:#d8e5fa; margin:0; max-width:620px; line-height:1.6; }
+    .hero-kicker { text-transform:uppercase; letter-spacing:1.7px; color:#a9c8ff; font-size:11px; font-weight:700; }
+    .hero-status { z-index:1; border:1px solid #ffffff55; background:#ffffff16; padding:12px 16px; border-radius:14px; white-space:nowrap; font-size:13px; }
+    .dot { display:inline-block; width:8px;height:8px;border-radius:50%;background:#6ee7b7;margin-right:8px; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; margin:28px 0 13px; gap:12px; }
+    .section-head h3 { font:700 16px Manrope; margin:0; }
+    .section-head span { color:var(--muted); font-size:12px; }
+    .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; }
+    .card { background:var(--surface); border:1px solid var(--line); border-radius:17px; padding:19px; box-shadow:var(--shadow); }
+    .metric-label { color:var(--muted); font-size:12px; font-weight:600; }
+    .metric-value { font:800 27px Manrope; margin:9px 0 4px; letter-spacing:-.7px; }
+    .metric-note { color:var(--muted); font-size:11px; }
+    .metric-icon { float:right; width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:16px; }
+    .i-blue{background:var(--blue-soft)} .i-teal{background:var(--teal-soft)} .i-purple{background:#f0ebff} .i-orange{background:#fff2e5}
+    .two-col { display:grid; grid-template-columns:1.25fr .75fr; gap:16px; }
+    .panel-title { font:700 15px Manrope; margin:0 0 4px; }
+    .panel-sub { font-size:11px;color:var(--muted);margin-bottom:20px; }
+    .timeline { position:relative; padding-left:24px; }
+    .timeline:before { content:"";position:absolute;left:6px;top:7px;bottom:10px;width:2px;background:#e4eaf3; }
+    .role { position:relative; padding:0 0 22px 5px; }
+    .role:last-child { padding-bottom:0; }
+    .role:before { content:"";position:absolute;left:-23px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:3px solid #eaf0ff; }
+    .role:nth-child(2):before { background:var(--teal);border-color:var(--teal-soft); }
+    .role:nth-child(3):before { background:var(--purple);border-color:#f0ebff; }
+    .role h4 { font-size:13px;margin:0 0 4px;font-weight:700; }
+    .role .meta { color:var(--muted);font-size:11px;line-height:1.5; }
+    .role .desc { font-size:11px;color:#536176;line-height:1.55;margin-top:7px; }
+    .pill-row { display:flex;flex-wrap:wrap;gap:7px;margin-top:10px; }
+    .pill { font-size:10px;font-weight:600;padding:6px 9px;border-radius:20px;background:#f0f4fa;color:#536176; }
+    .skill-list { display:grid;gap:15px; }
+    .skill-top { display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:7px; }
+    .skill-top span:last-child { color:var(--muted);font-size:10px;font-weight:500; }
+    .track { height:7px;background:#edf1f7;border-radius:10px;overflow:hidden; }
+    .fill { height:100%;border-radius:10px;background:linear-gradient(90deg,#356ae6,#16a6a0); }
+    .skill-footnote { color:var(--muted);font-size:10px;line-height:1.5;margin-top:16px; }
+    .bottom-grid { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px; }
+    .milestone { display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line); }
+    .milestone:last-child { border:0;padding-bottom:0; }
+    .milestone-icon { width:34px;height:34px;border-radius:11px;background:#eef3ff;display:grid;place-items:center; }
+    .milestone strong { display:block;font-size:12px; }
+    .milestone small { color:var(--muted);font-size:10px; }
+    .education-empty { border:1px dashed #cbd5e3;border-radius:13px;padding:16px;color:var(--muted);font-size:11px;line-height:1.6;background:#fafcff; }
+    footer { text-align:center;color:#8995a7;font-size:10px;margin-top:25px;line-height:1.6; }
+    @media(max-width:850px){.metrics{grid-template-columns:repeat(2,1fr)}.two-col{grid-template-columns:1fr}.bottom-grid{grid-template-columns:1fr}}
+    @media(max-width:520px){.shell{padding:18px 14px 32px}header{align-items:flex-start}.top-tag{font-size:10px}.hero{padding:23px;align-items:flex-start;flex-direction:column}.hero-status{font-size:11px}.metrics{gap:10px}.card{padding:15px}.metric-value{font-size:23px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand">
+        <div class="avatar">NK</div>
+        <div><h1>Nikil K</h1><div class="eyebrow">Personal Career Dashboard</div></div>
+      </div>
+      <div class="top-tag">BUSINESS ANALYST · SYNVORAITH AI</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker">Career overview</div>
+        <h2>Learning. Analyzing. Growing.</h2>
+        <p>Tracking a professional journey from Intern to Trainee to Business Analyst, with an interest in Python, Power BI and business analysis.</p>
+      </div>
+      <div class="hero-status"><span class="dot"></span>Current role: Business Analyst</div>
+    </section>
+
+    <div class="section-head"><h3>At a glance</h3><span>Based on the profile details provided</span></div>
+    <section class="metrics">
+      <article class="card"><div class="metric-icon i-blue">💼</div><div class="metric-label">Current position</div><div class="metric-value" style="font-size:21px">Business Analyst</div><div class="metric-note">Synvoraith AI · Dec 2025–Present</div></article>
+      <article class="card"><div class="metric-icon i-teal">📈</div><div class="metric-label">Career stages</div><div class="metric-value">3</div><div class="metric-note">Intern → Trainee → Analyst</div></article>
+      <article class="card"><div class="metric-icon i-purple">🧰</div><div class="metric-label">Highlighted skills</div><div class="metric-value">4+</div><div class="metric-note">Skills shown on profile</div></article>
+      <article class="card"><div class="metric-icon i-orange">📍</div><div class="metric-label">Current location</div><div class="metric-value" style="font-size:21px">Chennai</div><div class="metric-note">Tamil Nadu, India · Remote</div></article>
+    </section>
+
+    <div class="section-head"><h3>Experience & skills</h3><span>Professional journey</span></div>
+    <section class="two-col">
+      <article class="card">
+        <h3 class="panel-title">Experience timeline</h3>
+        <div class="panel-sub">Synvoraith AI · Three roles</div>
+        <div class="timeline">
+          <div class="role">
+            <h4>Business Analyst</h4>
+            <div class="meta">Dec 2025 – Present · Chennai, Tamil Nadu · Remote</div>
+            <div class="desc">Current role focused on business analysis. Profile highlights Python and IT Business Analysis.</div>
+            <div class="pill-row"><span class="pill">Python</span><span class="pill">IT Business Analysis</span></div>
+          </div>
+          <div class="role">
+            <h4>Trainee</h4>
+            <div class="meta">Feb 2024 – Nov 2025 · Hosur, Tamil Nadu · Hybrid</div>
+            <div class="desc">Training experience with Python and Microsoft Power BI listed among profile skills.</div>
+            <div class="pill-row"><span class="pill">Python</span><span class="pill">Microsoft Power BI</span></div>
+          </div>
+          <div class="role">
+            <h4>Intern</h4>
+            <div class="meta">Aug 2023 – Jan 2024 · Hosur, Tamil Nadu · On-site</div>
+            <div class="desc">First professional role at Synvoraith AI. Profile lists Python and IT Management.</div>
+            <div class="pill-row"><span class="pill">Python</span><span class="pill">IT Management</span></div>
+          </div>
+        </div>
+      </article>
+      <article class="card">
+        <h3 class="panel-title">Skills snapshot</h3>
+        <div class="panel-sub">Skills explicitly visible in the supplied profile</div>
+        <div class="skill-list">
+          <div><div class="skill-top"><span>Python (Programming Language)</span><span>Listed</span></div><div class="track"><div class="fill" style="width:90%"></div></div></div>
+          <div><div class="skill-top"><span>IT Business Analysis</span><span>Listed</span></div><div class="track"><div class="fill" style="width:76%"></div></div></div>
+          <div><div class="skill-top"><span>Microsoft Power BI</span><span>Listed</span></div><div class="track"><div class="fill" style="width:68%"></div></div></div>
+          <div><div class="skill-top"><span>IT Management</span><span>Listed</span></div><div class="track"><div class="fill" style="width:58%"></div></div></div>
+        </div>
+        <p class="skill-footnote">Bars are visual placeholders to organize the skills section—not measured proficiency ratings. Edit the values in <code>index.html</code> if you want to represent self-assessed levels.</p>
+      </article>
+    </section>
+
+    <section class="bottom-grid">
+      <article class="card">
+        <h3 class="panel-title">Career milestones</h3>
+        <div class="panel-sub">Progression at Synvoraith AI</div>
+        <div class="milestone"><div class="milestone-icon">🌱</div><div><strong>Started as Intern</strong><small>August 2023 · On-site</small></div></div>
+        <div class="milestone"><div class="milestone-icon">🧭</div><div><strong>Moved into Trainee role</strong><small>February 2024 · Hybrid</small></div></div>
+        <div class="milestone"><div class="milestone-icon">🚀</div><div><strong>Business Analyst</strong><small>December 2025 · Remote</small></div></div>
+      </article>
+      <article class="card">
+        <h3 class="panel-title">Education</h3>
+        <div class="panel-sub">Information currently available</div>
+        <div class="education-empty">Your LinkedIn details show “School” and “2023 – Present”, but the institution name, degree and field of study were not provided. Add those details here when available.</div>
+      </article>
+    </section>
+
+    <footer>
+      Personal portfolio dashboard · Built with HTML, CSS and JavaScript · Ready for GitHub Pages<br>
+      This dashboard uses only the profile information supplied. Skill-bar widths are illustrative, not verified proficiency scores.
+    </footer>
+  </main>
+</body>
+</html>
