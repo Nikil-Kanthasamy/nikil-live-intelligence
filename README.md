@@ -29,3 +29,8 @@ This project uses public APIs directly from the browser and requires no API key.
 
 ## Deployment
 Deploy the repository as a static site on Vercel. No build command is required; use the repository root as the output directory.
+
+
+## Additional demo
+
+A personal career portfolio dashboard is also included in [`portfolio-demo/`](./portfolio-demo/). Open [`portfolio-demo/index.html`](./portfolio-demo/index.html) to view the static portfolio demo.
