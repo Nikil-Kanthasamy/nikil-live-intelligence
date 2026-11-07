@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Live global news, software development, AI and open-source intelligence dashboard.">
+  <title>Nikil Live Intelligence</title><link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script defer src="app.js"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="brand-mark">N</span><span>NIKIL<span class="muted"> / INTELLIGENCE</span></span></a><div class="top-actions"><span class="live-dot">LIVE FEEDS</span><span id="updated">Connecting…</span><button id="refresh" class="button">↻ Refresh</button></div></header>
+<main class="shell">
+<section class="hero"><div><p class="eyebrow">PERSONAL INTELLIGENCE BRIEFING</p><h1>See what’s <span>happening now.</span></h1><p class="sub">A live view of world events, software engineering, AI and open source.</p></div><div class="hero-date" id="clock">—</div></section>
+<section class="stats"><article><span>GLOBAL NEWS</span><strong id="world-count">—</strong><small>Recent headlines</small></article><article><span>DEVELOPER RADAR</span><strong id="dev-count">—</strong><small>Community stories</small></article><article><span>GITHUB PULSE</span><strong id="git-count">—</strong><small>Trending repositories</small></article></section>
+<section class="toolbar"><div class="tabs"><button class="tab active" data-tab="world">World briefing</button><button class="tab" data-tab="dev">Developer radar</button><button class="tab" data-tab="github">GitHub pulse</button></div><input id="search" type="search" placeholder="Search headlines and stories…"></section>
+<section class="section-head"><div><p class="eyebrow">THE LATEST</p><h2 id="section-title">World briefing</h2></div><span id="status" class="status">Loading live feeds…</span></section>
+<div id="feed" class="feed"><div class="empty">Loading the latest updates…</div></div>
+<footer><span>Independent public-data dashboard · Not a news publisher</span><span>Refreshes every 5 minutes</span></footer>
+</main>
+</body></html>
